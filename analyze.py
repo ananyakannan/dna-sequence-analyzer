@@ -1,11 +1,33 @@
 #analyze .py
-#DNA sequence analyzer- Day 1
+#DNA sequence analyzer- Day 2
 from Bio import SeqIO
-#This is the path to our FASTA file
 fasta_file = "data/sequences.fasta"
-#SeqIO.parse() reads the file and gives us one Seqeunce Record at a time
-#"fasta" tells in what format to expect
+def calculate_gc_content(sequence):
+    sequence = str(sequence)
+    gc = (sequence.count("G") + sequence.count("C")) / len(sequence) * 100
+    return round(gc, 2)
+def count_nucleotides(sequence):
+    sequence = str(sequence)
+    counts = {
+        "A": sequence.count("A"),
+        "T": sequence.count("T"),
+        "G": sequence.count("G"),
+        "C": sequence.count("C")
+    }
+    return counts
+def get_sequence_length(sequence):
+    return len(sequence)
 for record in SeqIO.parse(fasta_file, "fasta"):
-    length = len(record.seq)
-    print(f"ID: {record.id} | Length: {length} bp")
+    gc = calculate_gc_content(record.seq)
+    counts = count_nucleotides(record.seq)
+    length = get_sequence_length(record.seq)
+    print(f" ID: {record.id}")
+    print(f" Length: {length}")
+    print(f" GC Content: {gc}%")
+    print(f" Nucleotide Counts: {counts}")
+    print("---")
+
+
+
+    
 
