@@ -1,0 +1,6 @@
+id,length,gc_content,A,T,C,G,at_content,gc_at_ratio
+seq1_BRCA1_exon,53,50.94,13,13,13,14,49.06,1.04
+seq2_TP53_promoter,56,53.57,13,13,15,15,46.43,1.15
+seq3_insulin_gene,53,47.17,14,14,10,15,52.83,0.89
+seq4_EGFR_region,54,51.85,13,13,13,15,48.15,1.08
+seq5_random_control,52,50.0,13,13,13,13,50.0,1.0
