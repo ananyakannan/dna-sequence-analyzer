@@ -4,8 +4,12 @@
 from Bio import SeqIO
 import pandas as pd
 import matplotlib.pyplot as plt
+import argparse
 
-fasta_file = "data/sequences.fasta"
+parser = argparse.ArgumentParser(description="DNA Sequence Analyzer")
+parser.add_argument("--input", required=True, help="Path to input FASTA file")
+args = parser.parse_args()
+fasta_file = args.input
 
 def calculate_gc_content(sequence):
     sequence = str(sequence)
@@ -136,10 +140,13 @@ plt.savefig("outputs/plots/combined_plots.png")
 plt.close()
 print("Summary panel saved!")
 
-
-
-
-
+print("\n=== ANALYSIS SUMMARY ===")
+print(f"Total sequences analyzed: {len(df)}")
+print(f"Average GC content: {round(df['gc_content'].mean(), 2)}%")
+print(f"Average sequence length: {round(df['length'].mean(), 2)}bp")
+print(f"Total ORFs found: {df['orf_counts'].sum()}")
+print(f"Sequences with no ORFs: {len(df[df['orf_counts'] == 0])}")
+print("=============================")
 
 
 
