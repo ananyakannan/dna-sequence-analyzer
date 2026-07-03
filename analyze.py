@@ -12,11 +12,13 @@ args = parser.parse_args()
 fasta_file = args.input
 
 def calculate_gc_content(sequence):
+    """Calculate the GC content of a DNA sequence."""
     sequence = str(sequence)
     gc = (sequence.count("G") + sequence.count("C")) / len(sequence) * 100
     return round(gc,2)
 
 def count_nucleotides(sequence):
+    """Count the occurrences of each nucleotide in a DNA sequence."""
     sequence = str(sequence)
     counts = {
         "A" : sequence.count("A"),
@@ -27,9 +29,11 @@ def count_nucleotides(sequence):
     return counts
 
 def get_sequence_lengths(sequence):
+    """Return the length of a DNA sequence in base pairs."""
     return len(sequence)
 
 def find_orfs(sequence):
+    """Find all open reading frames (ORFs) in a DNA sequence."""
     sequence = str(sequence)
     start_codon = "ATG"
     stop_codons = ["TAA", "TAG", "TGA"]
